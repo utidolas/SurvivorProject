@@ -1,0 +1,20 @@
+{
+    "asset": "f76e1fbd324044c49bf558fe41e9ff5b",
+    "fileName": "019847c4-a345-70da-9212-1650138ce13b.png",
+    "prompt": "Generate a 2D 16x16 pixeled sprite for a player. The perspective is the same as a TOPDOWN GAME. The player wears a shooter outfit with glasses and has steampunk elements.  ",
+    "negativePrompt": "3D",
+    "model": "b91fcf71-f4cf-43cb-ba1e-1f22a1296e46",
+    "modelName": "8-bit Pixel",
+    "customSeed": -1,
+    "w3CTraceId": "9ba8011592b03caccb5605c4dcf63d3d",
+    "refinementMode": "Generation",
+    "pixelateTargetSize": 0,
+    "pixelateKeepImageSize": false,
+    "pixelatePixelBlockSize": 0,
+    "pixelateMode": 0,
+    "pixelateOutlineThickness": 0,
+    "doodles": {
+        "m_Items": []
+    },
+    "upscaleFactor": 0
+}

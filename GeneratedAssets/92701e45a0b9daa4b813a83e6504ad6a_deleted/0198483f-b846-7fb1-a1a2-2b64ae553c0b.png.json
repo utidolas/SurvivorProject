@@ -1,0 +1,20 @@
+{
+    "asset": "92701e45a0b9daa4b813a83e6504ad6a",
+    "fileName": "0198483f-b846-7fb1-a1a2-2b64ae553c0b.png",
+    "prompt": "Create a slash effect as if someone punched the air. Make the animation as well",
+    "negativePrompt": "",
+    "model": "b91fcf71-f4cf-43cb-ba1e-1f22a1296e46",
+    "modelName": "8-bit Pixel",
+    "customSeed": -1,
+    "w3CTraceId": "f9256be80b5a5679eead7916e04693be",
+    "refinementMode": "Generation",
+    "pixelateTargetSize": 0,
+    "pixelateKeepImageSize": false,
+    "pixelatePixelBlockSize": 0,
+    "pixelateMode": 0,
+    "pixelateOutlineThickness": 0,
+    "doodles": {
+        "m_Items": []
+    },
+    "upscaleFactor": 0
+}

@@ -1,0 +1,20 @@
+{
+    "asset": "f76e1fbd324044c49bf558fe41e9ff5b",
+    "fileName": "019847af-6cd9-71ac-a2f4-fa3198ea8b0c.png",
+    "prompt": "Generate a 32x32 pixeled 2D top down style sprite for a player. The player has steampunk elements. ",
+    "negativePrompt": "3D",
+    "model": "242b56c1-2224-41c4-8949-2ba760bbfc69",
+    "modelName": "16-bit Pixel",
+    "customSeed": -1,
+    "w3CTraceId": "1792d2cdb0b5a59f1719fea560167873",
+    "refinementMode": "Generation",
+    "pixelateTargetSize": 0,
+    "pixelateKeepImageSize": false,
+    "pixelatePixelBlockSize": 0,
+    "pixelateMode": 0,
+    "pixelateOutlineThickness": 0,
+    "doodles": {
+        "m_Items": []
+    },
+    "upscaleFactor": 0
+}

@@ -1,0 +1,20 @@
+{
+    "asset": "f76e1fbd324044c49bf558fe41e9ff5b",
+    "fileName": "019847c6-1a34-77f8-883d-333567ab4bd8.png",
+    "prompt": "Generate a 2D 16 pixels sprite for a player. The perspective is the same as a TOPDOWN GAME like TIBIA or POKEMON. The player wears a shooter outfit with glasses and has steampunk elements.  ",
+    "negativePrompt": "3D",
+    "model": "b91fcf71-f4cf-43cb-ba1e-1f22a1296e46",
+    "modelName": "8-bit Pixel",
+    "customSeed": -1,
+    "w3CTraceId": "e04a4dd8bedae03edc1b039dc1c93419",
+    "refinementMode": "Generation",
+    "pixelateTargetSize": 0,
+    "pixelateKeepImageSize": false,
+    "pixelatePixelBlockSize": 0,
+    "pixelateMode": 0,
+    "pixelateOutlineThickness": 0,
+    "doodles": {
+        "m_Items": []
+    },
+    "upscaleFactor": 0
+}
