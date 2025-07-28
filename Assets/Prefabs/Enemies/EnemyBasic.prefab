@@ -178,4 +178,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce69b91634db9324aa704ca87fb8f6fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyBrain
-  speed: 1.5
+  enemyData: {fileID: 11400000, guid: 3f2a931f4a609c046a3053d1d3a5a776, type: 2}

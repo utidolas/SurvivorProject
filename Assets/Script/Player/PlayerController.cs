@@ -25,7 +25,6 @@ public class PlayerController : MonoBehaviour
         // Update animations and player facing direction
         MovementAnimation(); 
         FlipPlayer(); 
-        Debug.Log($"Player xVelocity: {movementInput}"); // Log player position for debugging
     }
 
     private void FixedUpdate()
