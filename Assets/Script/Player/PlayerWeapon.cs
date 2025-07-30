@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerWeapon : MonoBehaviour
 {
     // handled by AttacksSO
-    public float damage; 
+    public float damage;
     public float attackSpeed;
 
     BoxCollider2D triggerBox;
@@ -20,9 +20,9 @@ public class PlayerWeapon : MonoBehaviour
         var enemy = collision.GetComponent<EnemyBrain>();
         if (enemy != null)
         {
-            // decrease enemy health
-            enemy.health -= damage;
-            Debug.Log($"Enemy hit! Remaining health: {enemy.health}");
+            // decrease enemy health by calling the TakeDamage method from EnemyBrain
+            enemy.TakeDamage(damage);
+            Debug.Log($"Enemy hit! Remaining health: {enemy.health}"); // debug for testing purposes
         }
     }
 

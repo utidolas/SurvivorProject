@@ -179,3 +179,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyBrain
   enemyData: {fileID: 11400000, guid: 1b54753076eb2f34886b2a2ff51154cc, type: 2}
+  popUpDamage: {fileID: 4474394431798867177, guid: 7f48e28f73c8f7b4890094c29c976d88, type: 3}
+  health: 0
+  maxHealth: 0
+  speed: 0
+  damage: 0
