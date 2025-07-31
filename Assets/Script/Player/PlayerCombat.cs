@@ -12,6 +12,7 @@ public class PlayerCombat : MonoBehaviour
     private int comboCounter; // current combo count
 
     private Animator anim;
+    private Rigidbody2D rb;
     [SerializeField] PlayerWeapon weapon; 
     [SerializeField] AttacksHitBoxSO hitBoxData;
 
@@ -19,6 +20,7 @@ public class PlayerCombat : MonoBehaviour
     {
         // Get thecomponent's attached to this GameObject
         anim = GetComponent<Animator>(); 
+        rb = GetComponent<Rigidbody2D>();
     }
 
     private void Update()
@@ -74,7 +76,7 @@ public class PlayerCombat : MonoBehaviour
         lastComboEnd = Time.time;
     }
 
-    // Update the hitbox of the weapon based on the provided hitbox data
+    // Update the hitbox of the weapon based on the provided hitbox data, called by animation events
     public void UpdateHitbox(AttacksHitBoxSO hitBoxData)
     {
         BoxCollider2D boxCollider = weapon.GetComponent<BoxCollider2D>();
@@ -86,9 +88,10 @@ public class PlayerCombat : MonoBehaviour
         }
     }
 
-    public void DisableHitbox()
+    public void DisableHitboxAndResetHashList()
     {
         BoxCollider2D boxCollider = weapon.GetComponent<BoxCollider2D>();
+        weapon.ResetHitList(); // Reset the hit list of the weapon to allow hitting enemies again
         if (boxCollider != null)
         {
             boxCollider.enabled = false;

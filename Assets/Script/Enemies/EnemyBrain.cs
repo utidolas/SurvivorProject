@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -7,21 +8,25 @@ public class EnemyBrain : MonoBehaviour
 {
     public EnemyDataSO enemyData; // Reference to the EnemyData ScriptableObject
 
+    // References to components
+    private Rigidbody2D rb; 
+    private EnemyAnimations enemyAnimations; 
+
     [SerializeField] private GameObject popUpDamage; // Reference to the DamagePopUp GameObject
     private GameObject player; // Reference to the PlayerGameObject
-    private Rigidbody2D rb; // Reference to the Rigidbody component
 
-    // enemy stats
-    public float health;
-    public float maxHealth;
-    public float speed;
-    public float damage;
+    // enemy stats got from the EnemyData ScriptableObject
+    [NonSerialized] public float health;
+    [NonSerialized] public float maxHealth;
+    [NonSerialized] public float speed;
+    [NonSerialized] public float damage;
 
 
     private void Awake()
     {
         // Get component's attached to this GameObject
         rb = GetComponent<Rigidbody2D>();
+        enemyAnimations = GetComponent<EnemyAnimations>();
         player = GameObject.FindGameObjectWithTag("Player"); // Find the Player GameObject by tag
     }
 
@@ -42,6 +47,8 @@ public class EnemyBrain : MonoBehaviour
     {
         // movement towards the player
         transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);
+        // animation based on movement speed
+        enemyAnimations.WalkAnimation(speed);
 
     }
 

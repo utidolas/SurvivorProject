@@ -3,15 +3,15 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField]
-    private float moveSpeed = .5f; 
+    [SerializeField] private float moveSpeed = .5f;
 
     // Input for movement direction
     private Vector2 movementInput;
     private bool isFacingRight = true; // Track if the player is facing right
 
-    private Rigidbody2D rb; // Reference to the Rigidbody component
-    private Animator anim; // Reference to the Animation component
+    // References to components
+    private Rigidbody2D rb; 
+    private Animator anim; 
 
     private void Awake()
     {
@@ -53,6 +53,7 @@ public class PlayerController : MonoBehaviour
     // flip player sprite based on movement direction
     private void FlipPlayer()
     {
+
         // Check if the player is moving in the opposite direction of their current facing direction
         if (isFacingRight && movementInput.x < 0f || !isFacingRight && movementInput.x > 0f)
         {
