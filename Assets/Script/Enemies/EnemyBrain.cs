@@ -4,16 +4,18 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
-public class EnemyBrain : MonoBehaviour
+public class EnemyBrain : MonoBehaviour, IDamageable
 {
+    [Header("Enemy Settings")]
     public EnemyDataSO enemyData; // Reference to the EnemyData ScriptableObject
 
     // References to components
     private Rigidbody2D rb; 
     private EnemyAnimations enemyAnimations; 
 
+    public GameObject player; // Reference to the PlayerGameObject
+    [Header("Game Object References")]
     [SerializeField] private GameObject popUpDamage; // Reference to the DamagePopUp GameObject
-    private GameObject player; // Reference to the PlayerGameObject
 
     // enemy stats got from the EnemyData ScriptableObject
     [NonSerialized] public float health;
@@ -21,9 +23,19 @@ public class EnemyBrain : MonoBehaviour
     [NonSerialized] public float speed;
     [NonSerialized] public float damage;
 
+    # region State Machine Variables
+    public EnemyStateMachine EnemyStateMachine { get; set; }
+    public EnemyChaseState EnemyChaseState { get; set; }
+    public EnemyAttackState EnemyAttackState { get; set; }
+    #endregion
 
     private void Awake()
     {
+        // Initialize the state machine and states
+        EnemyStateMachine = new EnemyStateMachine();
+        EnemyChaseState = new EnemyChaseState(this, EnemyStateMachine);
+        EnemyAttackState = new EnemyAttackState(this, EnemyStateMachine);
+
         // Get component's attached to this GameObject
         rb = GetComponent<Rigidbody2D>();
         enemyAnimations = GetComponent<EnemyAnimations>();
@@ -37,21 +49,26 @@ public class EnemyBrain : MonoBehaviour
         maxHealth = enemyData.MaxHealth;
         speed = enemyData.Speed;
         damage = enemyData.Damage;
+
+        // initialize the state machine
+        EnemyStateMachine.Initialize(EnemyChaseState);
     }
 
     private void Update()   
     {
+        EnemyStateMachine.CurrentEnemyState.FrameUpdate(); // Call the FrameUpdate method of the current state
     }
 
     private void FixedUpdate()
     {
-        // movement towards the player
-        transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);
+        EnemyStateMachine.CurrentEnemyState.PhyshicsUpdate(); // Call the PhyshicsUpdate method of the current state
+        
         // animation based on movement speed
         enemyAnimations.WalkAnimation(speed);
 
     }
 
+    // ============== Implementation of IDamageable interface ==============
     public void TakeDamage(float damageAmount)
     {
         // Play the damage animation
@@ -71,9 +88,11 @@ public class EnemyBrain : MonoBehaviour
         }
     }
     
-    private void Die()
+    public void Die()
     {
         // Handle enemy death
         Destroy(gameObject); // Destroy the enemy GameObject
     }
+    // =========================================================================
+
 }

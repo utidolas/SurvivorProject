@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 4144834848412020338}
   - component: {fileID: 8085980757368196941}
   - component: {fileID: 6723390646804466766}
-  - component: {fileID: 2156634970398995907}
   - component: {fileID: 8733646148862490886}
+  - component: {fileID: 2156634970398995907}
   - component: {fileID: 8423141943826229643}
   m_Layer: 7
   m_Name: Enemy_FlyingEye
@@ -168,20 +168,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.6770762, y: 0.5018754}
   m_EdgeRadius: 0
---- !u!114 &2156634970398995907
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1755428949109222961}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce69b91634db9324aa704ca87fb8f6fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyBrain
-  enemyData: {fileID: 11400000, guid: 1b54753076eb2f34886b2a2ff51154cc, type: 2}
-  popUpDamage: {fileID: 4474394431798867177, guid: 7f48e28f73c8f7b4890094c29c976d88, type: 3}
 --- !u!95 &8733646148862490886
 Animator:
   serializedVersion: 7
@@ -204,6 +190,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2156634970398995907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1755428949109222961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce69b91634db9324aa704ca87fb8f6fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyBrain
+  enemyData: {fileID: 11400000, guid: 1b54753076eb2f34886b2a2ff51154cc, type: 2}
+  popUpDamage: {fileID: 4474394431798867177, guid: 7f48e28f73c8f7b4890094c29c976d88, type: 3}
 --- !u!114 &8423141943826229643
 MonoBehaviour:
   m_ObjectHideFlags: 0
