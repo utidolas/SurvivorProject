@@ -54,8 +54,12 @@ public class EnemyBrain : MonoBehaviour
 
     public void TakeDamage(float damageAmount)
     {
+        // Play the damage animation
+        enemyAnimations.DamageAnimation();
+
         // Reduce health by the damage amount
         health -= damageAmount;
+
         // Instantiate a damage pop-up a little higher than the enemy and set the text of the pop-up to the damage amount
         GameObject popUp = Instantiate(popUpDamage, new Vector3(transform.position.x, transform.position.y + .3f, transform.position.z) , Quaternion.identity);
         popUp.GetComponentInChildren<TMP_Text>().text = damageAmount.ToString();

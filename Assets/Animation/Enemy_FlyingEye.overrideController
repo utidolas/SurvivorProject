@@ -7,5 +7,11 @@ AnimatorOverrideController:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Enemy_FlyingEye
-  m_Controller: {fileID: 0}
-  m_Clips: []
+  m_Controller: {fileID: 9100000, guid: 7cb191373dba5df439e46eb972269c9d, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: fc98a7326a4b0d645aecada94be91b50, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: b938891a710f6174eba43c4cd365aab3, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: f3301500da327f64ab9b6cb3ee6e8932, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 9d3616c216585cd41915ae6b74f8c554, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 99e80b5c4bb036a44b9166698e2108db, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 4473aab52fe6b3b46b6abfae816f95f8, type: 2}

@@ -14,7 +14,6 @@ public class PlayerCombat : MonoBehaviour
     private Animator anim;
     private Rigidbody2D rb;
     [SerializeField] PlayerWeapon weapon; 
-    [SerializeField] AttacksHitBoxSO hitBoxData;
 
     private void Start()
     {
@@ -88,6 +87,7 @@ public class PlayerCombat : MonoBehaviour
         }
     }
 
+    // Enable the hitbox of the weapon and reset the hit list, called by animation events
     public void DisableHitboxAndResetHashList()
     {
         BoxCollider2D boxCollider = weapon.GetComponent<BoxCollider2D>();

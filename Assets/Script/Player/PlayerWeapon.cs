@@ -32,6 +32,11 @@ public class PlayerWeapon : MonoBehaviour
             Debug.Log($"Enemy hit! Remaining health: {enemy.health}"); // debug for testing purposes
         }
     }
+    public void ResetHitList()
+    {
+        enemiesDamaged.Clear();  // Clear the list of damaged enemies at the end of the attack
+
+    }
 
     // Methods using with animation events
     private void EnableTriggerBox()
@@ -44,10 +49,5 @@ public class PlayerWeapon : MonoBehaviour
         triggerBox.enabled = false;
     }
 
-    public void ResetHitList()
-    {
-        enemiesDamaged.Clear();  // Clear the list of damaged enemies at the end of the attack
-
-    }
 }
 

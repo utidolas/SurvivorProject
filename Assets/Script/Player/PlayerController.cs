@@ -3,7 +3,8 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed = .5f;
+    [Header("Player Settings")]
+    [SerializeField] PlayerDataSO playerData; // Reference to player data scriptable object
 
     // Input for movement direction
     private Vector2 movementInput;
@@ -29,7 +30,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.MovePosition(rb.position + movementInput * moveSpeed * Time.fixedDeltaTime);
+        rb.MovePosition(rb.position + movementInput * playerData.speed * Time.fixedDeltaTime);
     }
 
     // move player based on input
@@ -42,6 +43,7 @@ public class PlayerController : MonoBehaviour
     private void MovementAnimation()
     {
         anim.SetFloat("xVelocity", Math.Abs(movementInput.x));
+        anim.SetFloat("MoveSpeed", playerData.speed);
 
         // if the player is moving vertically, set xVelocity to 1
         if (movementInput.x == 0)

@@ -41,4 +41,10 @@ public class EnemyAnimations : MonoBehaviour
 
     }
 
+    public void DamageAnimation()
+    {
+        // Play the damage animation
+        anim.SetTrigger("Hurt");
+    }
+
 }
