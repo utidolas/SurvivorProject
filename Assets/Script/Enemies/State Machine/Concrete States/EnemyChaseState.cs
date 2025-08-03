@@ -19,7 +19,14 @@ public class EnemyChaseState : EnemyStateBase
 
     public override void FrameUpdate()
     {
-        base.FrameUpdate();
+
+        enemyBrain.enemyAnimations.WalkAnimation(enemyBrain.speed); // Trigger walk animation with current speed
+
+        // if the player is within attack distance, change to attack state
+        if (enemyBrain.IsWithAttackDistance)
+        {
+            enemyStateMachine.ChangeState(enemyBrain.EnemyAttackState); // Change to attack state if within attack distance
+        }
     }
 
     public override void PhyshicsUpdate()

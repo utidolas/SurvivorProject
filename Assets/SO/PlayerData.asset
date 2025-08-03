@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerDataSO
   health: 100
   maxHealth: 100
-  speed: 4
+  speed: 3
   critChange: 50
   critDamage: 75
   baseDamage: 3

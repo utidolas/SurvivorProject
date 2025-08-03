@@ -1,33 +1,51 @@
 using System;
+using System.Diagnostics;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
-public class EnemyBrain : MonoBehaviour, IDamageable
+public class EnemyBrain : MonoBehaviour, IDamageable, ITriggerCheckable
 {
     [Header("Enemy Settings")]
     public EnemyDataSO enemyData; // Reference to the EnemyData ScriptableObject
 
     // References to components
-    private Rigidbody2D rb; 
-    private EnemyAnimations enemyAnimations; 
+    [NonSerialized] public Rigidbody2D rb; 
+    [NonSerialized] public EnemyAnimations enemyAnimations; 
 
     public GameObject player; // Reference to the PlayerGameObject
     [Header("Game Object References")]
     [SerializeField] private GameObject popUpDamage; // Reference to the DamagePopUp GameObject
 
+    [Header("Enemy Stats")]
     // enemy stats got from the EnemyData ScriptableObject
-    [NonSerialized] public float health;
-    [NonSerialized] public float maxHealth;
-    [NonSerialized] public float speed;
-    [NonSerialized] public float damage;
-
+    public float health;
+    public float maxHealth;
+    public float speed;
+    public float damage;
+     
     # region State Machine Variables
     public EnemyStateMachine EnemyStateMachine { get; set; }
     public EnemyChaseState EnemyChaseState { get; set; }
     public EnemyAttackState EnemyAttackState { get; set; }
     #endregion
+
+    #region Animation Triggers
+    private void AnimationTriggerEvent(AnimationTriggerType triggerType)
+    {
+        EnemyStateMachine.CurrentEnemyState.AnimationTriggerEvent(triggerType); // Call the AnimationTriggerEvent method of the current state
+    }
+
+    public enum AnimationTriggerType
+    {
+        Attack,
+        Hurt
+    }
+    #endregion
+
+    public bool IsWithAttackDistance { get; set; }
+    
 
     private void Awake()
     {
@@ -62,9 +80,6 @@ public class EnemyBrain : MonoBehaviour, IDamageable
     private void FixedUpdate()
     {
         EnemyStateMachine.CurrentEnemyState.PhyshicsUpdate(); // Call the PhyshicsUpdate method of the current state
-        
-        // animation based on movement speed
-        enemyAnimations.WalkAnimation(speed);
 
     }
 
@@ -93,6 +108,11 @@ public class EnemyBrain : MonoBehaviour, IDamageable
         // Handle enemy death
         Destroy(gameObject); // Destroy the enemy GameObject
     }
+
     // =========================================================================
+    public void SetAttackDistance(bool isWithAttackDistance)
+    {
+        IsWithAttackDistance = isWithAttackDistance; // Set the IsWithAttackDistance property
+    }
 
 }

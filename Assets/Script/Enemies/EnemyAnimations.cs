@@ -19,6 +19,7 @@ public class EnemyAnimations : MonoBehaviour
 
     public void WalkAnimation(float speed)
     {
+
         anim.SetFloat("xVelocity", speed);
 
         Vector3 direction = (player.transform.position - transform.position).normalized;
@@ -40,6 +41,19 @@ public class EnemyAnimations : MonoBehaviour
         }
 
     }
+
+    public void IdleAnimation()
+    {
+        // Reset the xVelocity parameter to 0 for idle animation
+        anim.SetFloat("xVelocity", 0f);
+    }
+
+    public void AttackAnimation()
+    {
+        // Play the attack animation
+        anim.SetTrigger("Enemy_Attack");
+    }
+
 
     public void DamageAnimation()
     {
