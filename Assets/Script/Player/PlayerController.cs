@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, IDamageable
 {
     [Header("Player Settings")]
     [SerializeField] PlayerDataSO playerData; // Reference to player data scriptable object
@@ -66,5 +66,29 @@ public class PlayerController : MonoBehaviour
             transform.localScale = localScale;
         }
 
+    }
+
+    // Implementation of IDamageable interface
+    public void TakeDamage(float damage)
+    {
+        playerData.health -= damage;
+        if( playerData.health <= 0)
+        {
+            Die();
+        }
+        else
+        {
+            // Play hurt animation if not already playing or attacking
+            if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Hurt") && !anim.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
+            {
+                anim.Play("Hurt"); // Trigger hurt animation
+            }
+        }
+    }
+
+    public void Die()
+    {
+        anim.SetTrigger("isDead");
+        this.enabled = false; // Disable the PlayerController script
     }
 }

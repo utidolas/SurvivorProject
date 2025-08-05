@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyAttackState : EnemyStateBase
@@ -54,7 +55,34 @@ public class EnemyAttackState : EnemyStateBase
 
     public override void AnimationTriggerEvent(EnemyBrain.AnimationTriggerType triggerType)
     {
-        base.AnimationTriggerEvent(triggerType);
+        switch (triggerType)
+        {
+            case EnemyBrain.AnimationTriggerType.Attack:
+                // Handle attack animation trigger
+                enemyBrain.enemyAttackHitBox.SetActive(true); // Activate the hitbox for the attack
+
+                // Get the Collider2D component of the enemyAttackHitBox
+                Collider2D attackHitBoxCollider = enemyBrain.enemyAttackHitBox.GetComponent<Collider2D>();
+
+                // Create contact filter to check for triggers, activate it and set layer to "Player"
+                ContactFilter2D contactFilter = new ContactFilter2D();
+                contactFilter.useTriggers = true; 
+                contactFilter.SetLayerMask(LayerMask.GetMask("Player"));
+
+                // Array to store results of the overlap check and check overlap
+                Collider2D[] hitResults = new Collider2D[1]; 
+                int overlapCount = Physics2D.OverlapCollider(attackHitBoxCollider, contactFilter, hitResults);
+                if(overlapCount > 0)
+                {
+                    // Get the PlayerController component from the hit result
+                    PlayerController player = enemyBrain.player.GetComponent<PlayerController>();
+                    player.TakeDamage(enemyBrain.damage); // Call TakeDamage method on the player
+                    Debug.Log("Player Attacked");
+                }
+
+                enemyBrain.enemyAttackHitBox.SetActive(false); // Set hitbox inactive after attack
+                break;
+        }
     }
 
 }

@@ -57,8 +57,11 @@ public class EnemyAnimations : MonoBehaviour
 
     public void DamageAnimation()
     {
-        // Play the damage animation
-        anim.SetTrigger("Hurt");
+        // Play the damage animation ONYLY if the enemy is not already attacking
+        if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Enemy_Attack"))
+        {
+            anim.SetTrigger("Hurt");
+        }
     }
 
 }

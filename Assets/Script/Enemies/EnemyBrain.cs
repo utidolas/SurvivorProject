@@ -14,9 +14,11 @@ public class EnemyBrain : MonoBehaviour, IDamageable, ITriggerCheckable
     [NonSerialized] public Rigidbody2D rb; 
     [NonSerialized] public EnemyAnimations enemyAnimations; 
 
-    public GameObject player; // Reference to the PlayerGameObject
     [Header("Game Object References")]
-    [SerializeField] private GameObject popUpDamage; // Reference to the DamagePopUp GameObject
+    // Reference to other GameObjects   
+    public GameObject player; 
+    [SerializeField] private GameObject popUpDamage; 
+    public GameObject enemyAttackHitBox; 
 
     [Header("Enemy Stats")]
     // enemy stats got from the EnemyData ScriptableObject
@@ -86,7 +88,7 @@ public class EnemyBrain : MonoBehaviour, IDamageable, ITriggerCheckable
     // ============== Implementation of IDamageable interface ==============
     public void TakeDamage(float damageAmount)
     {
-        // Play the damage animation
+        // Play the damage animation 
         enemyAnimations.DamageAnimation();
 
         // Reduce health by the damage amount
