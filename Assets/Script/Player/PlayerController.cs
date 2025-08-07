@@ -20,12 +20,18 @@ public class PlayerController : MonoBehaviour, IDamageable
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
     }
+    
+    private void Start()
+    {
+        // Initialize health in UI
+        UIManager.Instance.SetHealth(playerData.health);
+    }
 
     private void Update()
     {
         // Update animations and player facing direction
-        MovementAnimation(); 
-        FlipPlayer(); 
+        MovementAnimation();
+        FlipPlayer();
     }
 
     private void FixedUpdate()
@@ -71,8 +77,11 @@ public class PlayerController : MonoBehaviour, IDamageable
     // Implementation of IDamageable interface
     public void TakeDamage(float damage)
     {
+        // Deal damage and update health bar
         playerData.health -= damage;
-        if( playerData.health <= 0)
+        UIManager.Instance.UpdateHealth(playerData.health);
+        
+        if (playerData.health <= 0)
         {
             Die();
         }
