@@ -4,7 +4,6 @@ using UnityEngine;
 public class PlayerDataSO : ScriptableObject
 {
     [Header("Player Stats")]
-    public float health;
     public float maxHealth;
     public float speed;
     public float critChange;

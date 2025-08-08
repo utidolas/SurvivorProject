@@ -6,8 +6,17 @@ public class PlayerController : MonoBehaviour, IDamageable
     [Header("Player Settings")]
     [SerializeField] PlayerDataSO playerData; // Reference to player data scriptable object
 
+    [Header("Player Stats")]
+    public float health;
+    public float maxHealth;
+    public float speed;
+    public float critChange;
+    public float critDamage;
+    public float baseDamage;
+    public float attackSpeed;
+
     // Input for movement direction
-    private Vector2 movementInput;
+    public Vector2 movementInput {get; private set; } // Use property to encapsulate movement input;
     private bool isFacingRight = true; // Track if the player is facing right
 
     // References to components
@@ -23,8 +32,17 @@ public class PlayerController : MonoBehaviour, IDamageable
     
     private void Start()
     {
+        // Set player stats from PlayerDataSO
+        maxHealth = playerData.maxHealth;
+        health = maxHealth;
+        speed = playerData.speed;
+        critChange = playerData.critChange;
+        critDamage = playerData.critDamage;
+        baseDamage = playerData.baseDamage;
+        attackSpeed = playerData.attackSpeed;
+
         // Initialize health in UI
-        UIManager.Instance.SetHealth(playerData.health);
+        UIManager.Instance.SetHealth(health);
     }
 
     private void Update()
@@ -36,7 +54,7 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     private void FixedUpdate()
     {
-        rb.MovePosition(rb.position + movementInput * playerData.speed * Time.fixedDeltaTime);
+        rb.MovePosition(rb.position + movementInput * speed * Time.fixedDeltaTime);
     }
 
     // move player based on input
@@ -49,7 +67,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     private void MovementAnimation()
     {
         anim.SetFloat("xVelocity", Math.Abs(movementInput.x));
-        anim.SetFloat("MoveSpeed", playerData.speed);
+        anim.SetFloat("MoveSpeed", speed);
 
         // if the player is moving vertically, set xVelocity to 1
         if (movementInput.x == 0)
@@ -78,10 +96,10 @@ public class PlayerController : MonoBehaviour, IDamageable
     public void TakeDamage(float damage)
     {
         // Deal damage and update health bar
-        playerData.health -= damage;
-        UIManager.Instance.UpdateHealth(playerData.health);
+        health -= damage;
+        UIManager.Instance.UpdateHealth(health);
         
-        if (playerData.health <= 0)
+        if (health <= 0)
         {
             Die();
         }
@@ -98,6 +116,19 @@ public class PlayerController : MonoBehaviour, IDamageable
     public void Die()
     {
         anim.SetTrigger("isDead");
+
         this.enabled = false; // Disable the PlayerController script
+
+        PlayerCombat playerCombatScript = GetComponent<PlayerCombat>();
+        playerCombatScript.enabled = false; // Disable PlayerCombat script
+        UIManager.Instance.ShowDeathPanel(); // Show death panel
+
+    }
+
+    // Methods called by animation events
+    public void DisableAnimatorAndPause()
+    {
+        anim.enabled = false; // Disable the animator to stop animations
+        Time.timeScale = 0f; // Pause the game
     }
 }
