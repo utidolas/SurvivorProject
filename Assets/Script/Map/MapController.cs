@@ -13,6 +13,14 @@ public class MapController : MonoBehaviour
     public GameObject currentChunk; // Current chunk the player is on
     PlayerController playerController;
 
+    [Header("Optimization")]
+    public List<GameObject> spawnedChunks;
+    public GameObject latestChunk;
+    public float maxOpDist; // this must be greater than the length and width of the tilemap
+    private float opDist; // distance to check for optimization
+    private float optimizerCooldown;
+    public float optimizerCooldownTime;
+
     private void Start()
     {
         playerController = player.GetComponent<PlayerController>();
@@ -25,6 +33,7 @@ public class MapController : MonoBehaviour
         {
             ChunkChecker();
         }
+        ChunkOptimizer();
     }
 
     private void ChunkChecker()
@@ -89,6 +98,13 @@ public class MapController : MonoBehaviour
                 noTerrainPosition = currentChunk.transform.Find("Right Up").position;
                 SpawnChunk();
             }
+            // check for up as well
+            else if (!Physics2D.OverlapCircle(currentChunk.transform.Find("Up").position, checkerRadius, terrainLayer))
+            {
+                // If no terrain chunk, set noTerrainPosition to above the player
+                noTerrainPosition = currentChunk.transform.Find("Up").position;
+                SpawnChunk();
+            }
         }
         // RIGHT DOWN
         else if (playerController.movementInput.x > 0 && playerController.movementInput.y < 0)
@@ -98,6 +114,13 @@ public class MapController : MonoBehaviour
             {
                 // If no terrain chunk, set noTerrainPosition to the right and below the player
                 noTerrainPosition = currentChunk.transform.Find("Right Down").position;
+                SpawnChunk();
+            }
+            // check for down as well
+            else if (!Physics2D.OverlapCircle(currentChunk.transform.Find("Down").position, checkerRadius, terrainLayer))
+            {
+                // If no terrain chunk, set noTerrainPosition to below the player
+                noTerrainPosition = currentChunk.transform.Find("Down").position;
                 SpawnChunk();
             }
         }
@@ -111,6 +134,13 @@ public class MapController : MonoBehaviour
                 noTerrainPosition = currentChunk.transform.Find("Left Up").position;
                 SpawnChunk();
             }
+            // check for up as well
+            else if (!Physics2D.OverlapCircle(currentChunk.transform.Find("Up").position, checkerRadius, terrainLayer))
+            {
+                // If no terrain chunk, set noTerrainPosition to above the player
+                noTerrainPosition = currentChunk.transform.Find("Up").position;
+                SpawnChunk();
+            }
         }
         // LEFT DOWN
         else if (playerController.movementInput.x < 0 && playerController.movementInput.y < 0)
@@ -122,6 +152,13 @@ public class MapController : MonoBehaviour
                 noTerrainPosition = currentChunk.transform.Find("Left Down").position;
                 SpawnChunk();
             }
+            // check for down as well
+            else if (!Physics2D.OverlapCircle(currentChunk.transform.Find("Down").position, checkerRadius, terrainLayer))
+            {
+                // If no terrain chunk, set noTerrainPosition to below the player
+                noTerrainPosition = currentChunk.transform.Find("Down").position;
+                SpawnChunk();
+            }
         }
         #endregion
     }
@@ -130,6 +167,35 @@ public class MapController : MonoBehaviour
     {
         // spawn a random terrain chunk at noTerrainPosition
         int rand = Random.Range(0, terrainChunks.Count);
-        Instantiate(terrainChunks[rand], noTerrainPosition, Quaternion.identity);    
+        latestChunk = Instantiate(terrainChunks[rand], noTerrainPosition, Quaternion.identity);    
+        spawnedChunks.Add(latestChunk);
+    }
+
+    private void ChunkOptimizer()
+    {
+        optimizerCooldown -= Time.deltaTime; // Decrease cooldown timer
+
+        if (optimizerCooldown <= 0f)
+        {
+            optimizerCooldown = optimizerCooldownTime;
+        }
+        else
+        {
+            return;
+        }
+
+        foreach (GameObject chunk in spawnedChunks)
+        {
+            opDist = Vector3.Distance(player.transform.position, chunk.transform.position); // set 'opDist' to be the distance between player and chunk
+
+            if (opDist > maxOpDist)
+            {
+                chunk.SetActive(false); // Deactivate chunk if it's too far from the player
+            }
+            else
+            {
+                chunk.SetActive(true); // Activate chunk if it's within the optimization distance
+            }
+        }
     }
 }
