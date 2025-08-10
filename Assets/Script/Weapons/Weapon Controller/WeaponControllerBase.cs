@@ -11,8 +11,12 @@ public class WeaponControllerBase : MonoBehaviour
     public WeaponDataSO weaponData; // Reference to the weapon data ScriptableObject
     private float currentCooldown;
 
+    protected PlayerController playerController; // Reference to the player controller
+
     virtual protected void Start()
     {
+        // Find the player controller in the scene
+        playerController = FindFirstObjectByType<PlayerController>();
         currentCooldown = weaponData.Cooldown;
     }
 

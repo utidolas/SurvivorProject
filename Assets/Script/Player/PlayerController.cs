@@ -76,6 +76,14 @@ public class PlayerController : MonoBehaviour, IDamageable
         }
     }
 
+    // Get player direction in vector3 format
+    public Vector3 GetPlayerDirection()
+    {
+        // Return the movement input as a Vector3
+        return new Vector3(movementInput.x, movementInput.y, 0f);
+    }
+
+
     // flip player sprite based on movement direction
     private void FlipPlayer()
     {
@@ -131,4 +139,6 @@ public class PlayerController : MonoBehaviour, IDamageable
         anim.enabled = false; // Disable the animator to stop animations
         Time.timeScale = 0f; // Pause the game
     }
+
+
 }

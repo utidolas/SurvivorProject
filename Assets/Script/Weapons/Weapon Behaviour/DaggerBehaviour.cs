@@ -2,13 +2,17 @@ using UnityEngine;
 
 public class DaggerBehaviour : ProjectileWeaponBehaviourBase
 {
+    DaggerController daggerController;
+
     protected override void Start()
     {
         base.Start();
+        daggerController = FindFirstObjectByType<DaggerController>();
     }
 
     private void Update()
     {
-        transform.position += direction * Time.deltaTime;
+        // Move the dagger in the direction it is facing
+        transform.position += direction * daggerController.weaponData.Speed * Time.deltaTime;
     }
 }
