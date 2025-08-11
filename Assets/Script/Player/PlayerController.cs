@@ -21,7 +21,12 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     // References to components
     private Rigidbody2D rb; 
-    private Animator anim; 
+    private Animator anim;
+
+
+    public float lastHorizontalVector;
+    public float lastVerticalVector;
+    public Vector2 lastMovedVector; // Store the last moved vector for the player
 
     private void Awake()
     {
@@ -43,6 +48,8 @@ public class PlayerController : MonoBehaviour, IDamageable
 
         // Initialize health in UI
         UIManager.Instance.SetHealth(health);
+
+        lastMovedVector = new Vector2(1, 0f);
     }
 
     private void Update()
@@ -50,6 +57,9 @@ public class PlayerController : MonoBehaviour, IDamageable
         // Update animations and player facing direction
         MovementAnimation();
         FlipPlayer();
+
+        // Update last moved vector based on movement input
+        GetPlayerLastVector();
     }
 
     private void FixedUpdate()
@@ -77,10 +87,27 @@ public class PlayerController : MonoBehaviour, IDamageable
     }
 
     // Get player direction in vector3 format
-    public Vector3 GetPlayerDirection()
+    public void GetPlayerLastVector()
     {
-        // Return the movement input as a Vector3
-        return new Vector3(movementInput.x, movementInput.y, 0f);
+
+        // store the last moved vector based on movement input
+        if (movementInput.x != 0)
+        {
+            lastHorizontalVector = movementInput.x;
+            lastMovedVector = new Vector2(lastHorizontalVector, 0f);
+        }
+
+        if (movementInput.y != 0)
+        {
+            lastVerticalVector = movementInput.y;
+            lastMovedVector = new Vector2(0f, lastVerticalVector);
+        }
+
+        // while moving diagonally, keep the last moved vector as the last horizontal and vertical vector
+        if (movementInput.x != 0 && movementInput.y != 0)
+        {
+            lastMovedVector = new Vector2(lastHorizontalVector, lastVerticalVector);
+        }
     }
 
 
