@@ -39,12 +39,14 @@ public class ProjectileWeaponBehaviourBase : MonoBehaviour
         {
             Debug.Log("Direction is DOWN");
             localScale.y = localScale.y * -1;
+            rotation.z = 360;
         }
         // UP
         else if(dirX == 0 && dirY > 0)
         {
             Debug.Log("Direction is UP");
             localScale.x = localScale.x * -1;
+            rotation.z = 360;
         }
         // RIGHT UP
         else if (dirX > 0 && dirY > 0)
