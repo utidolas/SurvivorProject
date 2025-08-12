@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a79d93b27155ed848a0ca776d2c616c0, type: 3}
   m_Name: GoblinEnemyData
   m_EditorClassIdentifier: Assembly-CSharp::EnemyDataSO
-  Health: 100
+  Health: 20
   MaxHealth: 100
   Speed: 0.5
   Damage: 2

@@ -1,10 +1,22 @@
 fileFormatVersion: 2
-guid: 48d18dd4f31918b4188dbbe57f3a033b
+guid: 21fe4adee5950514a9e7058b843e1b6c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7482667652216324306
-    second: Square
+      213: -7149207285861558815
+    second: gems_db16_0
+  - first:
+      213: -426231959601733858
+    second: gems_db16_1
+  - first:
+      213: 8565911879513389373
+    second: gems_db16_2
+  - first:
+      213: -2154472756403814111
+    second: gems_db16_3
+  - first:
+      213: -5337090024257511082
+    second: gems_db16_4
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,12 +63,12 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 256
-  spriteBorder: {x: 4, y: 4, z: 4, w: 4}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
-  spriteTessellationDetail: 0
+  spriteTessellationDetail: -1
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
@@ -68,7 +80,7 @@ TextureImporter:
   ignorePngGamma: 0
   applyGammaDecoding: 0
   swizzle: 50462976
-  cookieLightType: 1
+  cookieLightType: 0
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
@@ -96,72 +108,102 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: iOS
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Triangle
+      name: gems_db16_1
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 256
-        height: 256
-      alignment: 9
-      pivot: {x: 0.5, y: 0.28866667}
+        x: 5
+        y: 38
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
-      outline:
-      - - {x: 0, y: 93.70251}
-        - {x: -128, y: -128}
-        - {x: 128, y: -128}
-      physicsShape:
-      - - {x: 0, y: 93.70251}
-        - {x: -128, y: -128}
-        - {x: 128, y: -128}
-      tessellationDetail: 0
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
       bones: []
-      spriteID: 2d009a6b596c7d760800000000000000
-      internalID: 7482667652216324306
+      spriteID: e1f15008a48b51af0800000000000000
+      internalID: -426231959601733858
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gems_db16_2
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 36
+        width: 25
+        height: 25
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d39b1b3687b30e670800000000000000
+      internalID: 8565911879513389373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gems_db16_3
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 6
+        width: 20
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1214b446176c912e0800000000000000
+      internalID: -2154472756403814111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gems_db16_4
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 5
+        width: 26
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 651a9d966e8dee5b0800000000000000
+      internalID: -5337090024257511082
       vertices: []
       indices: 
       edges: []
       weights: []
     outline: []
     customData: 
-    physicsShape:
-    - - {x: -128, y: 128}
-      - {x: -128, y: -128}
-      - {x: 128, y: -128}
-      - {x: 128, y: 128}
+    physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: fb12fc9523e0e0b49bfab899ea74e08a
     internalID: 0
     vertices: []
     indices: 
@@ -171,7 +213,11 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Triangle: 7482667652216324306
+      gems_db16_0: -7149207285861558815
+      gems_db16_1: -426231959601733858
+      gems_db16_2: 8565911879513389373
+      gems_db16_3: -2154472756403814111
+      gems_db16_4: -5337090024257511082
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
