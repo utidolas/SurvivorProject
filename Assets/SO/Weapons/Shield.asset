@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 931e45d2e974d464c9e9169a27dc933a, type: 3}
-  m_Name: Dagger
+  m_Name: Shield
   m_EditorClassIdentifier: Assembly-CSharp::WeaponDataSO
-  weaponPrefab: {fileID: 6523479120859755031, guid: 7af5e2c029817a247aa4b72eb96a3333, type: 3}
-  damage: 5
-  speed: 6
-  cooldown: 1.5
-  pierce: 1
+  weaponPrefab: {fileID: 9172104536678907291, guid: 9b2bd33deb5d3e2489bd248e830b653a, type: 3}
+  damage: 2
+  speed: 4
+  cooldown: 5
+  pierce: 0

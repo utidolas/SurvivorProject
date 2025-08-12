@@ -145,7 +145,7 @@ Transform:
   m_GameObject: {fileID: 58704484}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.075, y: -0.024, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -655,7 +655,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
-  m_ApplyToSortingLayers: 00000000
+  m_ApplyToSortingLayers: 000000000545f5be23fff0a1d7db5595
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -811,6 +811,7 @@ GameObject:
   - component: {fileID: 1066829251}
   - component: {fileID: 1066829250}
   - component: {fileID: 1066829258}
+  - component: {fileID: 1066829259}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -831,13 +832,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerData: {fileID: 11400000, guid: cddd7f53ae249cc43bd1e6d5c98c6997, type: 2}
-  health: 0
-  maxHealth: 0
-  speed: 0
-  critChange: 0
-  critDamage: 0
-  baseDamage: 0
-  attackSpeed: 0
+  lastHorizontalVector: 0
+  lastVerticalVector: 0
+  lastMovedVector: {x: 0, y: 0}
 --- !u!114 &1066829251
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1031,9 +1028,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 100
+  m_SortingLayerID: -1789535273
+  m_SortingLayer: 3
+  m_SortingOrder: 10
   m_Sprite: {fileID: -3318188226485093758, guid: ae72133dacba6ec4eb33ecde48f50e56, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1060,6 +1057,7 @@ Transform:
   m_Children:
   - {fileID: 757657582}
   - {fileID: 58704485}
+  - {fileID: 1907327834}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &1066829256
@@ -1137,6 +1135,32 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 44c40ea24f147424080f4e9613ad165e, type: 2}
   - {fileID: 11400000, guid: f4f08eb56c1ee2e409a1eb6146353624, type: 2}
   weapon: {fileID: 757657580}
+--- !u!114 &1066829259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1066829249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8826f70f7563f246b47728876143e4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerStats
+  playerData: {fileID: 11400000, guid: cddd7f53ae249cc43bd1e6d5c98c6997, type: 2}
+  experience: 0
+  level: 1
+  experienceCap: 0
+  levelRanges:
+  - startLevel: 1
+    endLevel: 3
+    experienceCapIncrease: 100
+  - startLevel: 4
+    endLevel: 5
+    experienceCapIncrease: 200
+  - startLevel: 6
+    endLevel: 8
+    experienceCapIncrease: 300
 --- !u!1 &1105764323
 GameObject:
   m_ObjectHideFlags: 0
@@ -1558,7 +1582,7 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: -1789535273
   m_SortingOrder: 9999
   m_TargetDisplay: 0
 --- !u!224 &1227428546
@@ -2119,6 +2143,51 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1907327833
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1907327834}
+  - component: {fileID: 1907327835}
+  m_Layer: 6
+  m_Name: Shield Controller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1907327834
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1907327833}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.075, y: -0.06, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1066829255}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1907327835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1907327833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01aab20c955c114498c5be9ab7a3a4c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ShieldController
+  weaponData: {fileID: 11400000, guid: 112f1b33f4a192b448d9008ff064af81, type: 2}
 --- !u!1 &1932202716
 GameObject:
   m_ObjectHideFlags: 0
@@ -2748,8 +2817,16 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4443764822017334652, guid: a044c772c2d98df4b8c07a445f130257, type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4443764822017334652, guid: a044c772c2d98df4b8c07a445f130257, type: 3}
       propertyPath: m_SortingOrder
-      value: 50
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4443764822017334652, guid: a044c772c2d98df4b8c07a445f130257, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1789535273
       objectReference: {fileID: 0}
     - target: {fileID: 6168532102549511665, guid: a044c772c2d98df4b8c07a445f130257, type: 3}
       propertyPath: m_LocalPosition.x

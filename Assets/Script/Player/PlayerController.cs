@@ -6,15 +6,6 @@ public class PlayerController : MonoBehaviour, IDamageable
     [Header("Player Settings")]
     [SerializeField] PlayerDataSO playerData; // Reference to player data scriptable object
 
-    [Header("Player Stats")]
-    public float health;
-    public float maxHealth;
-    public float speed;
-    public float critChange;
-    public float critDamage;
-    public float baseDamage;
-    public float attackSpeed;
-
     // Input for movement direction
     public Vector2 movementInput {get; private set; } // Use property to encapsulate movement input;
     private bool isFacingRight = true; // Track if the player is facing right
@@ -22,6 +13,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     // References to components
     private Rigidbody2D rb; 
     private Animator anim;
+    private PlayerStats playerStats; // Reference to PlayerStats script
 
 
     public float lastHorizontalVector;
@@ -33,21 +25,13 @@ public class PlayerController : MonoBehaviour, IDamageable
         // Get component's attached to this GameObject
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        playerStats = GetComponent<PlayerStats>(); 
     }
-    
+     
     private void Start()
     {
-        // Set player stats from PlayerDataSO
-        maxHealth = playerData.maxHealth;
-        health = maxHealth;
-        speed = playerData.speed;
-        critChange = playerData.critChange;
-        critDamage = playerData.critDamage;
-        baseDamage = playerData.baseDamage;
-        attackSpeed = playerData.attackSpeed;
-
         // Initialize health in UI
-        UIManager.Instance.SetHealth(health);
+        UIManager.Instance.SetHealth(playerStats.currentHealth);
 
         lastMovedVector = new Vector2(1, 0f);
     }
@@ -64,7 +48,7 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     private void FixedUpdate()
     {
-        rb.MovePosition(rb.position + movementInput * speed * Time.fixedDeltaTime);
+        rb.MovePosition(rb.position + movementInput * playerStats.currentMoveSpeed * Time.fixedDeltaTime);
     }
 
     // move player based on input
@@ -77,7 +61,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     private void MovementAnimation()
     {
         anim.SetFloat("xVelocity", Math.Abs(movementInput.x));
-        anim.SetFloat("MoveSpeed", speed);
+        anim.SetFloat("MoveSpeed", playerStats.currentMoveSpeed);
 
         // if the player is moving vertically, set xVelocity to 1
         if (movementInput.x == 0)
@@ -131,10 +115,10 @@ public class PlayerController : MonoBehaviour, IDamageable
     public void TakeDamage(float damage)
     {
         // Deal damage and update health bar
-        health -= damage;
-        UIManager.Instance.UpdateHealth(health);
+        playerStats.currentHealth -= damage;
+        UIManager.Instance.UpdateHealth(playerStats.currentHealth);
         
-        if (health <= 0)
+        if (playerStats.currentHealth <= 0)
         {
             Die();
         }

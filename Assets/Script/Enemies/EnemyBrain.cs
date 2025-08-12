@@ -22,10 +22,10 @@ public class EnemyBrain : MonoBehaviour, IDamageable, ITriggerCheckable
 
     [Header("Enemy Stats")]
     // enemy stats got from the EnemyData ScriptableObject
-    public float health;
+    public float currentHealth;
     public float maxHealth;
-    public float speed;
-    public float damage;
+    public float currentSpeed;
+    public float currentDamage;
      
     # region State Machine Variables
     public EnemyStateMachine EnemyStateMachine { get; set; }
@@ -65,10 +65,10 @@ public class EnemyBrain : MonoBehaviour, IDamageable, ITriggerCheckable
     private void Start()
     {
         // initialize enemy data
-        health = enemyData.Health;
+        currentHealth = enemyData.Health;
         maxHealth = enemyData.MaxHealth;
-        speed = enemyData.Speed;
-        damage = enemyData.Damage;
+        currentSpeed = enemyData.Speed;
+        currentDamage = enemyData.Damage;
 
         // initialize the state machine
         EnemyStateMachine.Initialize(EnemyChaseState);
@@ -92,14 +92,14 @@ public class EnemyBrain : MonoBehaviour, IDamageable, ITriggerCheckable
         enemyAnimations.DamageAnimation();
 
         // Reduce health by the damage amount
-        health -= damageAmount;
+        currentHealth -= damageAmount;
 
         // Instantiate a damage pop-up a little higher than the enemy and set the text of the pop-up to the damage amount
         GameObject popUp = Instantiate(popUpDamage, new Vector3(transform.position.x, transform.position.y + .3f, transform.position.z) , Quaternion.identity);
         popUp.GetComponentInChildren<TMP_Text>().text = damageAmount.ToString();
 
         // Check if health is less than or equal to zero, and if so, call the Die method
-        if (health <= 0)
+        if (currentHealth <= 0)
         {
             Die();
         }

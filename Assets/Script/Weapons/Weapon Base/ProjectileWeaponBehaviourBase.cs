@@ -7,9 +7,26 @@ using UnityEngine;
 */
 public class ProjectileWeaponBehaviourBase : MonoBehaviour
 {
+    public WeaponDataSO weaponDataSO;
+
     // track dir the weapon should be facing
     protected Vector3 direction;
     public float destroyAfterSeconds;
+
+    // Current stats (from weaponDataSO)
+    protected float currentDamage;
+    protected float currentSpeed;
+    protected float currentCooldown;
+    protected int currentPierce;
+
+    private void Awake()
+    {
+        // set the current stats from the weaponDataSO
+        currentDamage = weaponDataSO.Damage;
+        currentSpeed = weaponDataSO.Speed;
+        currentCooldown = weaponDataSO.Cooldown;
+        currentPierce = weaponDataSO.Pierce;
+    }
 
     protected virtual void Start()
     {
@@ -18,6 +35,7 @@ public class ProjectileWeaponBehaviourBase : MonoBehaviour
 
     public void DirectionChecker(Vector3 dir)
     {
+        #region Direction Check logic for directions
         // Check for direction and set the local scale and rotation accordingly, assuming the weapon sprite is facing right by default.
 
         direction = dir;
@@ -29,7 +47,7 @@ public class ProjectileWeaponBehaviourBase : MonoBehaviour
         Vector3 rotation = transform.rotation.eulerAngles;
 
         // LEFT
-        if (dirX < 0 && dirY == 0) 
+        if (dirX < 0 && dirY == 0)
         {
             localScale.x = localScale.x * -1;
             localScale.y = localScale.y * -1;
@@ -37,33 +55,28 @@ public class ProjectileWeaponBehaviourBase : MonoBehaviour
         // DOWN
         else if (dirX == 0 && dirY < 0)
         {
-            Debug.Log("Direction is DOWN");
             localScale.y = localScale.y * -1;
             rotation.z = 360;
         }
         // UP
-        else if(dirX == 0 && dirY > 0)
+        else if (dirX == 0 && dirY > 0)
         {
-            Debug.Log("Direction is UP");
             localScale.x = localScale.x * -1;
             rotation.z = 360;
         }
         // RIGHT UP
         else if (dirX > 0 && dirY > 0)
         {
-            Debug.Log("Direction is RIGHT UP");
             rotation.z = 315;
         }
         // RIGHT DOWN
         else if (dirX > 0 && dirY < 0)
         {
-            Debug.Log("Direction is RIGHT DOWN");
             rotation.z = 225f;
         }
         // LEFT UP
         else if (dirX < 0 && dirY > 0)
         {
-            Debug.Log("Direction is LEFT UP");
             localScale.x = localScale.x * -1;
             localScale.y = localScale.y * -1;
             rotation.z = 225f;
@@ -71,7 +84,6 @@ public class ProjectileWeaponBehaviourBase : MonoBehaviour
         // LEFT DOWN
         else if (dirX < 0 && dirY < 0)
         {
-            Debug.Log("Direction is LEFT DOWN");
             localScale.x = localScale.x * -1;
             localScale.y = localScale.y * -1;
             rotation.z = 315f;
@@ -79,6 +91,28 @@ public class ProjectileWeaponBehaviourBase : MonoBehaviour
 
         transform.localScale = localScale;
         transform.rotation = Quaternion.Euler(rotation); // can't set vector rotation directly, must use Quaternion.Euler
+        #endregion
+    }
 
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
+    {
+        // check if the projectile hit an enemy, get the EnemyBrain component and call TakeDamage with currentDamage
+        if (collision.CompareTag("Enemy"))
+        {
+            EnemyBrain enemy = collision.GetComponent<EnemyBrain>();
+            enemy.TakeDamage(currentDamage);
+
+            // Reduce the pierce count after hitting an enemy
+            ReducePierce(); 
+        }
+    }
+
+    protected virtual void ReducePierce()
+    {
+        currentPierce--;
+        if (currentPierce <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }

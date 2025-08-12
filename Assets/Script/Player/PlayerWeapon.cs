@@ -29,7 +29,6 @@ public class PlayerWeapon : MonoBehaviour
 
             // Add the enemy to the hit list so it won't be hit again
             enemiesDamaged.Add(collision.gameObject);
-            Debug.Log($"Enemy hit! Remaining health: {enemy.health}"); // debug for testing purposes
         }
     }
     public void ResetHitList()
