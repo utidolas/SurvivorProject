@@ -57,7 +57,7 @@ public class PlayerStats : MonoBehaviour
         LevelUpChecker();
     }
 
-    void LevelUpChecker()
+    internal void LevelUpChecker()
     {
         if (experience >= experienceCap)
         {
@@ -74,6 +74,21 @@ public class PlayerStats : MonoBehaviour
                 }
             }
             experienceCap += experienceIncrease;
+        }
+    }
+
+    public void RestoreHealth(float amount)
+    {
+        // only heal if current health is less than max health
+        if (currentHealth < playerData.MaxHealth)
+        {
+            currentHealth += amount;
+            UIManager.Instance.UpdateHealth(currentHealth); // Update health in UI
+            // ensure current health does not exceed max health
+            if (currentHealth > playerData.MaxHealth)
+            {
+                currentHealth = playerData.MaxHealth;
+            }
         }
     }
 
