@@ -3,6 +3,10 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "PlayerData", menuName = "ScriptableObjects/PlayerData", order = 1)]
 public class PlayerDataSO : ScriptableObject
 {
+    [Header("Player Weapon")]
+    [SerializeField] internal GameObject startingWeapon;
+    public GameObject StartingWeapon { get => startingWeapon; private set => startingWeapon = value; }
+
     [Header("Player Stats")]
 
     [SerializeField] internal float maxHealth;

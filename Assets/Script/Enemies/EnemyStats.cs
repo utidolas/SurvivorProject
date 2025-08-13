@@ -5,7 +5,7 @@ public class EnemyStats : MonoBehaviour
     public EnemyDataSO EnemyData; // Reference to the EnemyData ScriptableObject
 
     // current stats initialized from the EnemyData ScriptableObject
-    [HideInInspector] public float currentHealth;
+    public float currentHealth;
     [HideInInspector] public float currentMoveSpeed;
     [HideInInspector] public float currentDamage;
 

@@ -10,6 +10,7 @@ public class ShieldBehaviour : MeleeWeaponBehaviourBase
     protected override void Start()
     {
         base.Start();
+        markedEnemies = new List<GameObject>();
     }
 
     protected override void OnTriggerEnter2D(Collider2D collision)

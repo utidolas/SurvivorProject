@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
-    public PlayerDataSO playerData; // Reference to player data scriptable object
+    // Reference to player data scriptable object (got from menu)
+    internal PlayerDataSO playerData; 
 
     // Current stats
     public float currentHealth;
@@ -17,6 +18,8 @@ public class PlayerStats : MonoBehaviour
     [HideInInspector] public float currentRecovery;
     [HideInInspector] public float currentProjectileSpeed;
     [HideInInspector] public float currentMagnet;
+
+    // Spawned Weapon
 
     // Experience and level
     [Header("Experience and Level")]
@@ -37,6 +40,12 @@ public class PlayerStats : MonoBehaviour
 
     private void Awake()
     {
+        // Pick the "PlayerDataSO.cs" from the "CharacterSelector.cs".
+        playerData = CharacterSelector.GetData();
+
+        // Destroy the singleton of characterselector
+        CharacterSelector.instance.DestroySingleton();
+
         currentHealth = playerData.MaxHealth; 
         currentMoveSpeed = playerData.MoveSpeed;
         currentCritChance = playerData.CritChange;

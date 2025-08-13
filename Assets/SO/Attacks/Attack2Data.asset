@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Attack2Data
   m_EditorClassIdentifier: Assembly-CSharp::AttacksSO
   animatorOvCtrl: {fileID: 22100000, guid: 67bfe08285fbff14ca1da40ef7ca3513, type: 2}
-  damage: 2
+  damage: 25
   attackSpeed: 50

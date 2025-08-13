@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0e647c03bdd4f34ab8d1dbd19171205, type: 3}
+  m_Name: PlayerDataDagger
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerDataSO
+  maxHealth: 500
+  moveSpeed: 3
+  critChange: 20
+  critDamage: 75
+  baseDamage: 3
+  attackSpeed: 0.6
+  recovery: 0.03
+  projectileSpeed: 0
+  magnet: 0.3

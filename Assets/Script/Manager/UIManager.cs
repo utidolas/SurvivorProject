@@ -29,20 +29,12 @@ public class UIManager : SingletonPattern<UIManager>
     // Button methods for UI interactions
     public void GoToMainMenu()
     {
-        Debug.Log("Go to Main Menu");
+        SceneManager.LoadScene("Menu");
     }
 
     public void GoToSettings()
     {
         Debug.Log("Go to Settings");
-    }
-
-    public void RestartGame()
-    {
-        // Restart the current scene and reset the death panel
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        DeathPanel.SetActive(false);
-        Time.timeScale = 1f; // Resume the game
     }
 
     public void QuitGame()
