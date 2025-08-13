@@ -7,14 +7,16 @@ public class PlayerStats : MonoBehaviour
     public PlayerDataSO playerData; // Reference to player data scriptable object
 
     // Current stats
-    internal float currentHealth;  
-    internal float currentMoveSpeed; 
-    internal float currentCritChance;
-    internal float currentCritDamage;
-    internal float currentBaseDamage;
-    internal float currentAttackSpeed; 
-    internal float currentRecovery; 
-    internal float currentProjectileSpeed;
+    public float currentHealth;
+
+    [HideInInspector] public float currentMoveSpeed;
+    [HideInInspector] public float currentCritChance;
+    [HideInInspector] public float currentCritDamage;
+    [HideInInspector] public float currentBaseDamage;
+    [HideInInspector] public float currentAttackSpeed;
+    [HideInInspector] public float currentRecovery;
+    [HideInInspector] public float currentProjectileSpeed;
+    [HideInInspector] public float currentMagnet;
 
     // Experience and level
     [Header("Experience and Level")]
@@ -43,6 +45,7 @@ public class PlayerStats : MonoBehaviour
         currentAttackSpeed = playerData.AttackSpeed;
         currentRecovery = playerData.Recovery;
         currentProjectileSpeed = playerData.ProjectileSpeed;
+        currentMagnet = playerData.Magnet;
     }
 
     private void Start()
@@ -51,10 +54,31 @@ public class PlayerStats : MonoBehaviour
         experienceCap = levelRanges[0].experienceCapIncrease;
     }
 
+    private void Update()
+    {
+        Recover();
+        // Update health in UI
+        UIManager.Instance.UpdateHealth(currentHealth); 
+    }
+
     public void IncreaseExperience(int amount)
     {
         experience += amount;
         LevelUpChecker();
+    }
+
+    private void Recover()
+    {
+        if (currentHealth < playerData.maxHealth)
+        {
+            currentHealth += currentRecovery;
+
+            // assure recover doesn't exceed player's max health
+            if (currentHealth > playerData.MaxHealth)
+            {
+                currentHealth = playerData.MaxHealth;
+            }
+        }
     }
 
     internal void LevelUpChecker()
@@ -83,7 +107,6 @@ public class PlayerStats : MonoBehaviour
         if (currentHealth < playerData.MaxHealth)
         {
             currentHealth += amount;
-            UIManager.Instance.UpdateHealth(currentHealth); // Update health in UI
             // ensure current health does not exceed max health
             if (currentHealth > playerData.MaxHealth)
             {

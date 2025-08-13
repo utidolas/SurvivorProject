@@ -7,12 +7,10 @@ using UnityEngine.Rendering.Universal;
 
 public class EnemyBrain : MonoBehaviour, IDamageable, ITriggerCheckable
 {
-    [Header("Enemy Settings")]
-    public EnemyDataSO enemyData; // Reference to the EnemyData ScriptableObject
-
     // References to components
     [NonSerialized] public Rigidbody2D rb; 
-    [NonSerialized] public EnemyAnimations enemyAnimations; 
+    [NonSerialized] public EnemyAnimations enemyAnimations;
+    [NonSerialized] public EnemyStats enemyStats; 
 
     [Header("Game Object References")]
     // Reference to other GameObjects   
@@ -20,12 +18,6 @@ public class EnemyBrain : MonoBehaviour, IDamageable, ITriggerCheckable
     [SerializeField] private GameObject popUpDamage; 
     public GameObject enemyAttackHitBox; 
 
-    [Header("Enemy Stats")]
-    // enemy stats got from the EnemyData ScriptableObject
-    public float currentHealth;
-    public float maxHealth;
-    public float currentSpeed;
-    public float currentDamage;
      
     # region State Machine Variables
     public EnemyStateMachine EnemyStateMachine { get; set; }
@@ -57,6 +49,7 @@ public class EnemyBrain : MonoBehaviour, IDamageable, ITriggerCheckable
         EnemyAttackState = new EnemyAttackState(this, EnemyStateMachine);
 
         // Get component's attached to this GameObject
+        enemyStats = GetComponent<EnemyStats>(); 
         rb = GetComponent<Rigidbody2D>();
         enemyAnimations = GetComponent<EnemyAnimations>();
         player = GameObject.FindGameObjectWithTag("Player"); // Find the Player GameObject by tag
@@ -64,12 +57,6 @@ public class EnemyBrain : MonoBehaviour, IDamageable, ITriggerCheckable
 
     private void Start()
     {
-        // initialize enemy data
-        currentHealth = enemyData.Health;
-        maxHealth = enemyData.MaxHealth;
-        currentSpeed = enemyData.Speed;
-        currentDamage = enemyData.Damage;
-
         // initialize the state machine
         EnemyStateMachine.Initialize(EnemyChaseState);
     }
@@ -92,14 +79,14 @@ public class EnemyBrain : MonoBehaviour, IDamageable, ITriggerCheckable
         enemyAnimations.DamageAnimation();
 
         // Reduce health by the damage amount
-        currentHealth -= damageAmount;
+        enemyStats.currentHealth -= damageAmount;
 
         // Instantiate a damage pop-up a little higher than the enemy and set the text of the pop-up to the damage amount
         GameObject popUp = Instantiate(popUpDamage, new Vector3(transform.position.x, transform.position.y + .3f, transform.position.z) , Quaternion.identity);
         popUp.GetComponentInChildren<TMP_Text>().text = damageAmount.ToString();
 
         // Check if health is less than or equal to zero, and if so, call the Die method
-        if (currentHealth <= 0)
+        if (enemyStats.currentHealth <= 0)
         {
             Die();
         }

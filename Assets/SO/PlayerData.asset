@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0e647c03bdd4f34ab8d1dbd19171205, type: 3}
   m_Name: PlayerData
   m_EditorClassIdentifier: Assembly-CSharp::PlayerDataSO
-  maxHealth: 100
+  maxHealth: 500
   moveSpeed: 3
   critChange: 20
   critDamage: 75
   baseDamage: 3
   attackSpeed: 0.6
-  recovery: 0
+  recovery: 0.01
   projectileSpeed: 0
+  magnet: 1.6

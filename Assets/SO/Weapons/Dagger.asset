@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WeaponDataSO
   weaponPrefab: {fileID: 6523479120859755031, guid: 7af5e2c029817a247aa4b72eb96a3333, type: 3}
   damage: 5
-  speed: 6
-  cooldown: 0.5
+  speed: 5
+  cooldown: 1
   pierce: 1

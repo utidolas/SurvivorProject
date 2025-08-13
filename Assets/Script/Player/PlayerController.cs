@@ -3,9 +3,6 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour, IDamageable
 {
-    [Header("Player Settings")]
-    [SerializeField] PlayerDataSO playerData; // Reference to player data scriptable object
-
     // Input for movement direction
     public Vector2 movementInput {get; private set; } // Use property to encapsulate movement input;
     private bool isFacingRight = true; // Track if the player is facing right
@@ -116,7 +113,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     {
         // Deal damage and update health bar
         playerStats.currentHealth -= damage;
-        UIManager.Instance.UpdateHealth(playerStats.currentHealth);
+        //UIManager.Instance.UpdateHealth(playerStats.currentHealth);
         
         if (playerStats.currentHealth <= 0)
         {

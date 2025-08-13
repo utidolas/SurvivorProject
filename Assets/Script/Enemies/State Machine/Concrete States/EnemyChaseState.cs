@@ -20,7 +20,7 @@ public class EnemyChaseState : EnemyStateBase
     public override void FrameUpdate()
     {
 
-        enemyBrain.enemyAnimations.WalkAnimation(enemyBrain.currentSpeed); // Trigger walk animation with current speed
+        enemyBrain.enemyAnimations.WalkAnimation(enemyBrain.enemyStats.currentMoveSpeed); // Trigger walk animation with current speed
 
         // if the player is within attack distance, change to attack state
         if (enemyBrain.IsWithAttackDistance)
@@ -34,6 +34,6 @@ public class EnemyChaseState : EnemyStateBase
         base.PhyshicsUpdate();
 
         // movement towards the player
-        enemyBrain.transform.position = Vector2.MoveTowards(enemyBrain.transform.position, enemyBrain.player.transform.position, enemyBrain.currentSpeed * Time.deltaTime);
+        enemyBrain.transform.position = Vector2.MoveTowards(enemyBrain.transform.position, enemyBrain.player.transform.position, enemyBrain.enemyStats.currentMoveSpeed * Time.deltaTime);
     }
 }

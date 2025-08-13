@@ -176,6 +176,7 @@ GameObject:
   - component: {fileID: 6920240284638631729}
   - component: {fileID: 5072041872092430938}
   - component: {fileID: 4283667463060107399}
+  - component: {fileID: 3747561673874161852}
   m_Layer: 7
   m_Name: Enemy_Goblin
   m_TagString: Enemy
@@ -365,14 +366,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce69b91634db9324aa704ca87fb8f6fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyBrain
-  enemyData: {fileID: 11400000, guid: 3f2a931f4a609c046a3053d1d3a5a776, type: 2}
   player: {fileID: 0}
   popUpDamage: {fileID: 4474394431798867177, guid: 7f48e28f73c8f7b4890094c29c976d88, type: 3}
   enemyAttackHitBox: {fileID: 967974235958771369}
-  currentHealth: 0
-  maxHealth: 0
-  currentSpeed: 0
-  currentDamage: 0
 --- !u!114 &5072041872092430938
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -401,3 +397,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c62fec895fb2b894196a5f26b1fbfb7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAnimations
+--- !u!114 &3747561673874161852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6405936278367576479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a32fa189adb629e4bac3f86a1304e72e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyStats
+  EnemyData: {fileID: 11400000, guid: 3f2a931f4a609c046a3053d1d3a5a776, type: 2}
+  currentHealth: 0
+  currentMoveSpeed: 0
+  currentDamage: 0

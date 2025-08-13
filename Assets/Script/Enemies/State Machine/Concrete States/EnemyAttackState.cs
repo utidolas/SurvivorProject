@@ -18,7 +18,7 @@ public class EnemyAttackState : EnemyStateBase
         enemyBrain.enemyAnimations.AttackAnimation();
 
         // make the enemy speed 0 when in attack state and play idle animation
-        enemyBrain.currentSpeed = 0;
+        enemyBrain.enemyStats.currentMoveSpeed = 0;
         enemyBrain.enemyAnimations.IdleAnimation(); 
 
     }
@@ -35,7 +35,7 @@ public class EnemyAttackState : EnemyStateBase
         {
             enemyStateMachine.ChangeState(enemyBrain.EnemyChaseState);
             // reset enemy speed to normal when leaving attack state
-            enemyBrain.currentSpeed = enemyBrain.enemyData.Speed;
+            enemyBrain.enemyStats.currentMoveSpeed = enemyBrain.enemyStats.EnemyData.MoveSpeed;
         }
         else if(_timer > _timeBetweenAttacks) // if player is in enemy attack range 
         {
@@ -74,7 +74,7 @@ public class EnemyAttackState : EnemyStateBase
                 {
                     // Get the PlayerController component from the hit result
                     PlayerController player = enemyBrain.player.GetComponent<PlayerController>();
-                    player.TakeDamage(enemyBrain.currentDamage); // Call TakeDamage method on the player
+                    player.TakeDamage(enemyBrain.enemyStats.currentDamage); // Call TakeDamage method on the player
                     Debug.Log("Player Attacked");
                 }
 

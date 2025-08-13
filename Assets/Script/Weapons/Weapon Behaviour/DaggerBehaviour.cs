@@ -13,6 +13,6 @@ public class DaggerBehaviour : ProjectileWeaponBehaviourBase
     private void Update()
     {
         // Move the dagger in the direction it is facing
-        transform.position += direction * daggerController.weaponData.Speed * Time.deltaTime;
+        transform.position += direction * currentSpeed * Time.deltaTime;
     }
 }

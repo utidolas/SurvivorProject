@@ -4,35 +4,38 @@ using UnityEngine;
 public class PlayerDataSO : ScriptableObject
 {
     [Header("Player Stats")]
-    [SerializeField]
-    internal float maxHealth;
+
+    [SerializeField] internal float maxHealth;
     public float MaxHealth { get => maxHealth; private set => maxHealth = value; }
 
-    [SerializeField]
-    internal float moveSpeed;
+
+    [SerializeField] internal float moveSpeed;
     public float MoveSpeed { get => moveSpeed; private set => moveSpeed = value; }
 
-    [SerializeField]
-    internal float critChange;
+
+    [SerializeField] internal float critChange;
     public float CritChange { get => critChange; private set => critChange = value; }
 
-    [SerializeField]
-    internal float critDamage;
+
+    [SerializeField] internal float critDamage;
     public float CritDamage { get => critDamage; private set => critDamage = value; }
 
-    [SerializeField]
-    internal float baseDamage;
+
+    [SerializeField] internal float baseDamage;
     public float BaseDamage { get => baseDamage; private set => baseDamage = value; }
 
-    [SerializeField]
-    internal float attackSpeed;
+    [SerializeField] internal float attackSpeed;
     public float AttackSpeed { get => attackSpeed; private set => attackSpeed = value; }
 
-    [SerializeField]
-    internal float recovery;
+
+    [SerializeField] internal float recovery;
     public float Recovery { get => recovery; private set => recovery = value; }
 
-    [SerializeField]
-    internal float projectileSpeed;
+
+    [SerializeField] internal float projectileSpeed;
     public float ProjectileSpeed { get => projectileSpeed; private set => projectileSpeed = value; }
+
+
+    [SerializeField] internal float magnet;
+    public float Magnet { get => magnet; private set => magnet = value; }
 }
