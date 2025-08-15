@@ -119,51 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &58704484
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 58704485}
-  - component: {fileID: 58704486}
-  m_Layer: 6
-  m_Name: Dagger Controller
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &58704485
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 58704484}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1066829255}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &58704486
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 58704484}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5b624ee29939504da48d5b2ad4256ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DaggerController
-  weaponData: {fileID: 11400000, guid: c9b91eb80812e344b893a4974c133223, type: 2}
 --- !u!1001 &105711036
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -644,7 +599,7 @@ Transform:
   m_GameObject: {fileID: 534150318}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 4.8, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1303,13 +1258,11 @@ Transform:
   m_GameObject: {fileID: 1066829249}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.39, y: -1.7, z: 0}
+  m_LocalPosition: {x: -2.81, y: -0.92, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 757657582}
-  - {fileID: 58704485}
-  - {fileID: 1907327834}
   - {fileID: 1004261325}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1409,6 +1362,7 @@ MonoBehaviour:
   currentRecovery: 0
   currentProjectileSpeed: 0
   currentMagnet: 0
+  spawnedWeapons: []
   experience: 0
   level: 1
   experienceCap: 0
@@ -1635,59 +1589,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1112599898}
   m_CullTransparentMesh: 1
---- !u!1 &1116624287
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1116624288}
-  - component: {fileID: 1116624289}
-  m_Layer: 0
-  m_Name: EnemySpawn
-  m_TagString: Untagged
-  m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1116624288
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1116624287}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.22, y: 3.98, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1338595525}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1116624289
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1116624287}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eebcaf606ed885a4ea0bab4d8b05d028, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemySpawn
-  enemies:
-  - enemyPrefab: {fileID: 1755428949109222961, guid: 9e2cc61fbf93ff249aa9f3183d783ec5, type: 3}
-    cost: 1
-  - enemyPrefab: {fileID: 6405936278367576479, guid: a044c772c2d98df4b8c07a445f130257, type: 3}
-    cost: 3
-  currentWave: 5
-  enemiesToSpawn: []
-  spawnLocation: {fileID: 1116624288}
-  waveDuration: 50
 --- !u!1 &1211197080
 GameObject:
   m_ObjectHideFlags: 0
@@ -2118,13 +2019,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1338595525}
+  - component: {fileID: 1338595526}
   m_Layer: 0
-  m_Name: WaveSpawner
+  m_Name: EnemySpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1338595525
 Transform:
   m_ObjectHideFlags: 0
@@ -2133,14 +2035,31 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1338595524}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.13238, y: -4.08324, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1116624288}
+  m_Children: []
   m_Father: {fileID: 534150319}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1338595526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1338595524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eebcaf606ed885a4ea0bab4d8b05d028, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
+  waves:
+  - waveName: First Wave
+    enemyGroups: []
+    enemiesNumToSpawn: 0
+    spawnInterval: 0
+    spawnCount: 0
 --- !u!1 &1624454602
 GameObject:
   m_ObjectHideFlags: 0
@@ -2323,51 +2242,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1907327833
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1907327834}
-  - component: {fileID: 1907327835}
-  m_Layer: 6
-  m_Name: Shield Controller
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &1907327834
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1907327833}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1066829255}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1907327835
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1907327833}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01aab20c955c114498c5be9ab7a3a4c6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ShieldController
-  weaponData: {fileID: 11400000, guid: 112f1b33f4a192b448d9008ff064af81, type: 2}
 --- !u!1 &1932202716
 GameObject:
   m_ObjectHideFlags: 0

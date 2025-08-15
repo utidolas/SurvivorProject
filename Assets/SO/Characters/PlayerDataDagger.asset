@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0e647c03bdd4f34ab8d1dbd19171205, type: 3}
   m_Name: PlayerDataDagger
   m_EditorClassIdentifier: Assembly-CSharp::PlayerDataSO
+  startingWeapon: {fileID: 5530172023211860821, guid: 034ff669521b85b4fa526acf1af8632a, type: 3}
   maxHealth: 500
   moveSpeed: 3
   critChange: 20

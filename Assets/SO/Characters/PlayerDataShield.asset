@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0e647c03bdd4f34ab8d1dbd19171205, type: 3}
   m_Name: PlayerDataShield
   m_EditorClassIdentifier: Assembly-CSharp::PlayerDataSO
+  startingWeapon: {fileID: 4074451230221168886, guid: b74e9e86378c3ae43a0dcd1f7d462ffb, type: 3}
   maxHealth: 500
   moveSpeed: 3
   critChange: 20
